@@ -10,7 +10,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "seed": "node --experimental-strip-types src/scripts/seed.mts",
+    "seed": "tsx src/scripts/seed.ts",
     "test": "vitest run"
   },
   "keywords": [],
@@ -28,6 +28,7 @@
     "@types/node": "^26.1.2",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
+    "tsx": "^4.23.11",
     "typescript": "^5.9.3",
     "vitest": "^4.1.10"
   }

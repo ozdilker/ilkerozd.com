@@ -1,4 +1,4 @@
-import { getDb } from '../lib/db.mts';
+import { getDb } from '../lib/db';
 
 const db = getDb();
 
