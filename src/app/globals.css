@@ -1,15 +1,12 @@
 :root {
-  --background: #0d0d0f;
-  --background-alt: #131316;
-  --surface: #18181c;
-  --border: #2a2a30;
-  --foreground: #e4e4e7;
-  --muted: #9a9aa2;
-  --accent: #f5a623;
-  --accent-foreground: #1a1305;
-  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Consolas,
-    'Liberation Mono', monospace;
-  --max-width: 960px;
+  --paper: #eae7dd;
+  --paper-alt: #e2ded2;
+  --ink: #1a1a18;
+  --accent: #e2402a;
+  --muted: #6b675f;
+  --hairline: #c9c4b8;
+  --max-width: 1200px;
+  --font-display: var(--font-body);
 }
 
 * {
@@ -22,16 +19,13 @@ body {
   margin: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-mono);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 h1,
@@ -46,8 +40,10 @@ figure {
 h1,
 h2,
 h3 {
-  line-height: 1.25;
-  font-weight: 600;
+  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
 }
 
 img {
@@ -56,12 +52,12 @@ img {
 }
 
 a {
-  color: var(--accent);
+  color: var(--ink);
   text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: var(--accent);
 }
 
 ul {
@@ -74,16 +70,18 @@ button {
   font-family: inherit;
 }
 
-section {
-  padding: 4rem 1.5rem;
+/* Editoryal siyah-beyaz görsel işleme: içerik görselleri gri tonlu,
+   hover'da renk açılır. */
+.bw {
+  filter: grayscale(1) contrast(1.02);
+  transition: filter 0.5s ease;
 }
 
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
+.bw:hover {
+  filter: grayscale(0);
 }
 
 ::selection {
   background: var(--accent);
-  color: var(--accent-foreground);
+  color: var(--paper);
 }

@@ -1,7 +1,22 @@
 .footer {
-  border-top: 1px solid var(--border);
-  padding: 1.5rem;
-  text-align: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem;
+  border-top: 1px solid var(--hairline);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.mark {
+  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+  font-weight: 900;
+  text-transform: lowercase;
+  letter-spacing: -0.02em;
+}
+
+.year {
   color: var(--muted);
   font-size: 0.85rem;
 }

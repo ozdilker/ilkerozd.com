@@ -9,9 +9,8 @@ export default function Footer({ isim }: FooterProps) {
 
   return (
     <footer className={styles.footer}>
-      <p>
-        © {yil} {isim}
-      </p>
+      <span className={styles.mark}>{isim}</span>
+      <span className={styles.year}>© {yil}</span>
     </footer>
   );
 }

@@ -1,0 +1,10 @@
+.title {
+  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+  font-weight: 900;
+  color: var(--accent);
+  text-transform: lowercase;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  font-size: clamp(2.75rem, 9vw, 6.5rem);
+  margin: 0;
+}
