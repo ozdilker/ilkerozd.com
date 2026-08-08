@@ -35,6 +35,7 @@ export default function AdminDashboardPage() {
       <div className={styles.links}>
         <Link href="/admin/urunler">Ürünleri yönet →</Link>
         <Link href="/admin/galeri">Galeriyi yönet →</Link>
+        <Link href="/admin/sayfa-gorselleri">Sayfa görsellerini düzenle →</Link>
         <Link href="/admin/ayarlar">Ayarları düzenle →</Link>
       </div>
     </div>

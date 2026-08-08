@@ -7,6 +7,7 @@ const links = [
   { href: '/admin', label: 'Panel' },
   { href: '/admin/urunler', label: 'Ürünler' },
   { href: '/admin/galeri', label: 'Galeri' },
+  { href: '/admin/sayfa-gorselleri', label: 'Sayfa Görselleri' },
   { href: '/admin/ayarlar', label: 'Ayarlar' },
 ];
 

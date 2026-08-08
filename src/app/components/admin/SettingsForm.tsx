@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Settings } from '@/lib/types';
-import ImageUpload from './ImageUpload';
 import Toast, { type ToastState } from './Toast';
 import styles from './AdminForm.module.css';
 
@@ -70,11 +69,6 @@ export default function SettingsForm({ settings }: SettingsFormProps) {
           onChange={(e) => update('hero_tagline', e.target.value)}
         />
       </label>
-
-      <div className={styles.field}>
-        <span>Hero görsel</span>
-        <ImageUpload value={form.hero_gorsel} onChange={(path) => update('hero_gorsel', path)} />
-      </div>
 
       <label className={styles.field}>
         <span>Hakkımda</span>

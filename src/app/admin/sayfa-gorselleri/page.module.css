@@ -1,0 +1,11 @@
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hint {
+  margin-bottom: 1.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  max-width: 60ch;
+}
