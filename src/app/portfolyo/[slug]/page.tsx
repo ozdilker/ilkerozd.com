@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
-import { getSettings, getPublishedProducts, getProductBySlug } from '@/lib/queries';
+import { getPublishedProducts, getProductBySlug } from '@/lib/queries';
 import { splitParagraphs } from '@/lib/text';
-import Nav from '../../components/Nav';
-import Footer from '../../components/Footer';
+import PageShell from '../../components/PageShell';
+import RedDot from '../../components/editorial/RedDot';
+import BwImage from '../../components/editorial/BwImage';
 import styles from './page.module.css';
 
 export const dynamic = 'force-static';
@@ -25,71 +25,69 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     notFound();
   }
 
-  const settings = getSettings();
   const { baslik, detay, kapak_gorsel, canli_link, github_link, teknolojiler } = product;
   const paragraphs = splitParagraphs(detay);
 
   return (
-    <>
-      <Nav isim={settings.isim} />
-      <main>
-        <article className={`container ${styles.detail}`}>
-          {kapak_gorsel && (
-            <div className={styles.imageWrapper}>
-              <Image
-                src={kapak_gorsel}
-                alt={baslik}
-                fill
-                className={styles.image}
-                sizes="(max-width: 768px) 100vw, 768px"
-                priority
-              />
-            </div>
-          )}
+    <PageShell>
+      <article className={styles.detail}>
+        <header className={styles.head}>
+          <RedDot size={40} className={styles.dot} />
           <h1 className={styles.baslik}>{baslik}</h1>
-          {teknolojiler.length > 0 && (
+          {teknolojiler.length > 0 ? (
             <ul className={styles.tags}>
-              {teknolojiler.map((tek) => (
-                <li key={tek} className={styles.tag}>
-                  {tek}
-                </li>
+              {teknolojiler.map((t) => (
+                <li key={t}>{t}</li>
               ))}
             </ul>
-          )}
-          <div className={styles.body}>
+          ) : null}
+        </header>
+
+        {kapak_gorsel ? (
+          <figure className={styles.figure}>
+            <BwImage
+              src={kapak_gorsel}
+              alt={baslik}
+              fill
+              sizes="(max-width: 1200px) 100vw, 1200px"
+              priority
+            />
+          </figure>
+        ) : null}
+
+        <div className={styles.body}>
+          <div className={styles.text}>
             {paragraphs.length > 0 ? (
               paragraphs.map((p, i) => <p key={i}>{p}</p>)
             ) : (
               <p>{detay}</p>
             )}
           </div>
-          {(canli_link || github_link) && (
-            <div className={styles.actions}>
-              {canli_link && (
-                <a
-                  className={styles.button}
-                  href={canli_link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Canlı →
-                </a>
-              )}
-              {github_link && (
-                <a
-                  className={`${styles.button} ${styles.buttonSecondary}`}
-                  href={github_link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub →
-                </a>
-              )}
-            </div>
-          )}
-        </article>
-      </main>
-      <Footer isim={settings.isim} />
-    </>
+
+          <aside className={styles.side}>
+            {canli_link ? (
+              <a
+                className={styles.link}
+                href={canli_link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Canlı ↗
+              </a>
+            ) : null}
+            {github_link ? (
+              <a
+                className={styles.link}
+                href={github_link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub ↗
+              </a>
+            ) : null}
+          </aside>
+        </div>
+      </article>
+    </PageShell>
   );
 }

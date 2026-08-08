@@ -1,0 +1,104 @@
+.block {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.flip .figure {
+  order: 2;
+}
+
+.figure {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  background: var(--paper-alt);
+}
+
+.imgLink {
+  position: absolute;
+  inset: 0;
+}
+
+.info {
+  position: relative;
+}
+
+.numara {
+  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1;
+  color: var(--accent);
+  display: block;
+}
+
+.baslik {
+  margin-top: 0.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 900;
+  text-transform: lowercase;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.baslik a {
+  color: var(--ink);
+}
+
+.baslik a:hover {
+  color: var(--accent);
+}
+
+.aciklama {
+  margin-top: 1rem;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  max-width: 44ch;
+  color: var(--ink);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.tags li {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  border: 1px solid var(--hairline);
+  padding: 0.25rem 0.6rem;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.detay {
+  color: var(--accent);
+}
+
+@media (max-width: 800px) {
+  .block {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .flip .figure {
+    order: 0;
+  }
+}
