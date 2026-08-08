@@ -29,7 +29,7 @@
 }
 
 .brand:hover {
-  color: var(--accent);
+  color: var(--accent-strong);
 }
 
 .links {
@@ -50,7 +50,7 @@
 }
 
 .active {
-  color: var(--accent) !important;
+  color: var(--accent-strong) !important;
 }
 
 @media (max-width: 640px) {

@@ -16,6 +16,7 @@
   gap: 1.5rem;
   padding-top: 0.5rem;
   border-top: 2px solid var(--ink);
+  animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
 }
 
 .eyebrow {
@@ -35,9 +36,9 @@
 }
 
 .intro {
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.7;
-  max-width: 34ch;
+  max-width: 32ch;
   color: var(--ink);
 }
 
@@ -45,6 +46,7 @@
   grid-area: heading;
   position: relative;
   padding-top: 0.5rem;
+  animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .dot {
@@ -63,20 +65,9 @@
   text-transform: lowercase;
   line-height: 0.85;
   letter-spacing: -0.04em;
-  font-size: clamp(3.5rem, 12vw, 9rem);
+  font-size: clamp(3.25rem, 10vw, 7rem);
   margin: 0;
   word-break: break-word;
-}
-
-.kicker {
-  display: block;
-  margin-top: 0.75rem;
-  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
-  font-weight: 800;
-  text-transform: lowercase;
-  letter-spacing: 0.02em;
-  color: var(--ink);
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .hero {
@@ -86,6 +77,7 @@
   aspect-ratio: 4 / 3;
   margin: 0;
   overflow: hidden;
+  animation: rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.06s both;
 }
 
 @media (max-width: 900px) {

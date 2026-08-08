@@ -3,6 +3,9 @@
   --paper-alt: #e2ded2;
   --ink: #1a1a18;
   --accent: #e2402a;
+  /* Küçük metin/linkler için AA'yı (≥4.5:1) geçen daha koyu kırmızı;
+     canlı --accent yalnızca iri display tipografide (≥3:1) kullanılır. */
+  --accent-strong: #b8321c;
   --muted: #6b675f;
   --hairline: #c9c4b8;
   --max-width: 1200px;
@@ -57,7 +60,12 @@ a {
 }
 
 a:hover {
-  color: var(--accent);
+  color: var(--accent-strong);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 3px;
 }
 
 ul {
@@ -84,4 +92,27 @@ button {
 ::selection {
   background: var(--accent);
   color: var(--paper);
+}
+
+/* Tek authored an: kapak açılışında yumuşak yükseliş + netleşme.
+   Yalnızca kapakta kullanılır; hareket hassasiyeti olanlarda kapatılır. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }

@@ -30,7 +30,6 @@ export default function Home() {
         <div className={styles.headingWrap}>
           <RedDot size={64} className={styles.dot} />
           <h1 className={styles.name}>{settings.isim}</h1>
-          <span className={styles.kicker}>portfolyo</span>
         </div>
 
         <figure className={styles.hero}>

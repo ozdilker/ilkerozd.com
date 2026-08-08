@@ -16,10 +16,7 @@ export default function HakkimdaPage() {
     <PageShell>
       <section className={styles.about}>
         <header className={styles.head}>
-          <EditorialTitle as="h1">
-            hakkımda
-          </EditorialTitle>
-          <p className={styles.role}>{settings.unvan}</p>
+          <EditorialTitle as="h1">hakkımda</EditorialTitle>
         </header>
 
         <div className={styles.body}>

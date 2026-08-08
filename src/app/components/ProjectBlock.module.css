@@ -89,7 +89,7 @@
 }
 
 .detay {
-  color: var(--accent);
+  color: var(--accent-strong);
 }
 
 @media (max-width: 800px) {
