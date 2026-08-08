@@ -9,7 +9,7 @@ db.prepare(
    VALUES
     (1, @isim, @unvan, @hero_tagline, @hero_gorsel, @kapak_gorsel_2, @hakkimda_gorsel, @iletisim_gorsel, @hakkimda_metin, @email, @github, @linkedin, @twitter)`
 ).run({
-  isim: 'İlker Özd',
+  isim: 'İlker Özdemir',
   unvan: 'Yazılım Geliştirici',
   hero_tagline: 'Fikirleri çalışan yazılımlara dönüştürüyorum.',
   hero_gorsel: '/hero.png',
