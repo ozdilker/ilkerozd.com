@@ -26,6 +26,9 @@ export interface Settings {
   unvan: string;
   hero_tagline: string;
   hero_gorsel: string;
+  kapak_gorsel_2: string;
+  hakkimda_gorsel: string;
+  iletisim_gorsel: string;
   hakkimda_metin: string;
   email: string;
   github: string;

@@ -124,4 +124,20 @@ describe('updateSettings', () => {
     const settings = getSettings(db);
     expect(settings.isim).toBe('İlker Özdemir');
   });
+
+  it('sayfa görseli alanlarını yazar ve okur', () => {
+    const db = seedDb();
+    updateSettings(
+      {
+        kapak_gorsel_2: '/uploads/y.jpg',
+        hakkimda_gorsel: '/uploads/x.jpg',
+        iletisim_gorsel: '/uploads/z.jpg',
+      },
+      db,
+    );
+    const s = getSettings(db);
+    expect(s.kapak_gorsel_2).toBe('/uploads/y.jpg');
+    expect(s.hakkimda_gorsel).toBe('/uploads/x.jpg');
+    expect(s.iletisim_gorsel).toBe('/uploads/z.jpg');
+  });
 });

@@ -5,14 +5,17 @@ const db = getDb();
 // --- settings: id=1 satırını varsayılan içerikle günceller (idempotent) ---
 db.prepare(
   `INSERT OR REPLACE INTO settings
-    (id, isim, unvan, hero_tagline, hero_gorsel, hakkimda_metin, email, github, linkedin, twitter)
+    (id, isim, unvan, hero_tagline, hero_gorsel, kapak_gorsel_2, hakkimda_gorsel, iletisim_gorsel, hakkimda_metin, email, github, linkedin, twitter)
    VALUES
-    (1, @isim, @unvan, @hero_tagline, @hero_gorsel, @hakkimda_metin, @email, @github, @linkedin, @twitter)`
+    (1, @isim, @unvan, @hero_tagline, @hero_gorsel, @kapak_gorsel_2, @hakkimda_gorsel, @iletisim_gorsel, @hakkimda_metin, @email, @github, @linkedin, @twitter)`
 ).run({
   isim: 'İlker Özd',
   unvan: 'Yazılım Geliştirici',
   hero_tagline: 'Fikirleri çalışan yazılımlara dönüştürüyorum.',
   hero_gorsel: '/hero.png',
+  kapak_gorsel_2: '',
+  hakkimda_gorsel: '/hero.png',
+  iletisim_gorsel: '/hero.png',
   hakkimda_metin:
     'Merhaba, ben İlker. Web ve masaüstü uygulamalar geliştiren bir yazılım geliştiricisiyim. Temiz kod ve kullanıcı deneyimine önem veririm.',
   email: 'ozd.ilker@gmail.com',
