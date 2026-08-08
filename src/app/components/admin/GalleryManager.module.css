@@ -1,0 +1,112 @@
+.addSection {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.addLabel {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.empty {
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: var(--background-alt);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.cardBody,
+.editForm {
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cardTitle {
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.cardDesc {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.cardSira {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.editForm input {
+  background: var(--background-alt);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--foreground);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.4rem 0.5rem;
+}
+
+.cardActions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+}
+
+.cardActions button {
+  background: var(--accent);
+  border: none;
+  border-radius: 4px;
+  color: var(--accent-foreground);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 0.35rem 0.7rem;
+}
+
+.cardActions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.secondary {
+  background: none !important;
+  border: 1px solid var(--border) !important;
+  color: var(--muted) !important;
+}
+
+.deleteButton {
+  background: none !important;
+  border: 1px solid var(--border) !important;
+  color: #f19b9b !important;
+}

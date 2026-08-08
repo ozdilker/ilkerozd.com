@@ -1,0 +1,79 @@
+.empty {
+  color: var(--muted);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.table th {
+  text-align: left;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--border);
+  padding: 0.6rem 0.75rem;
+}
+
+.table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.6rem 0.75rem;
+  vertical-align: middle;
+}
+
+.published {
+  color: #7fe0a3;
+}
+
+.draft {
+  color: var(--muted);
+}
+
+.reorder {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.reorder button {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--foreground);
+  cursor: pointer;
+  padding: 0.15rem 0.5rem;
+}
+
+.reorder button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.deleteButton {
+  background: none;
+  border: none;
+  color: #f19b9b;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0;
+}
+
+.deleteButton:hover {
+  text-decoration: underline;
+}
+
+.deleteButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

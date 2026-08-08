@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.4rem;
+}
+
+.newButton {
+  background: var(--accent);
+  border-radius: 6px;
+  color: var(--accent-foreground);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+}
+
+.newButton:hover {
+  text-decoration: none;
+  opacity: 0.9;
+}

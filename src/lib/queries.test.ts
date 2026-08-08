@@ -3,6 +3,7 @@ import Database from 'better-sqlite3';
 import { initSchema } from './db';
 import {
   getSettings,
+  getAllProducts,
   getPublishedProducts,
   getProductBySlug,
   getFeaturedProducts,
@@ -34,6 +35,19 @@ describe('getPublishedProducts', () => {
     const rows = getPublishedProducts(db);
     expect(rows[0].yayinda).toBe(true);
     expect(typeof rows[0].yayinda).toBe('boolean');
+  });
+});
+
+describe('getAllProducts', () => {
+  it('yayında olsun olmasın tüm ürünleri sira ASC sırasıyla döndürür', () => {
+    const db = seedDb();
+    db.prepare(`INSERT INTO products (baslik,slug,teknolojiler,sira,yayinda) VALUES
+      ('B','b','[]',2,1),
+      ('A','a','[]',1,0),
+      ('C','c','[]',3,0)`).run();
+    const rows = getAllProducts(db);
+    expect(rows.map((r) => r.slug)).toEqual(['a', 'b', 'c']);
+    expect(rows.map((r) => r.yayinda)).toEqual([false, true, false]);
   });
 });
 

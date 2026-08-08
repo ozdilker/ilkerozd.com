@@ -39,6 +39,12 @@ export function getPublishedProducts(db: Database.Database = getDb()): Product[]
   return rows.map(mapProduct);
 }
 
+/** Tüm ürünleri (yayında/taslak fark etmeksizin) sira ASC sırasıyla döndürür. Admin listesi için kullanılır. */
+export function getAllProducts(db: Database.Database = getDb()): Product[] {
+  const rows = db.prepare('SELECT * FROM products ORDER BY sira ASC').all() as ProductRow[];
+  return rows.map(mapProduct);
+}
+
 /** Slug'a göre ürünü döndürür; bulunamazsa null döner. */
 export function getProductBySlug(
   slug: string,
