@@ -5,17 +5,17 @@ interface NavProps {
 }
 
 const links = [
-  { href: '#hakkimda', label: 'Hakkımda' },
-  { href: '#portfolyo', label: 'Portfolyo' },
-  { href: '#galeri', label: 'Galeri' },
-  { href: '#iletisim', label: 'İletişim' },
+  { href: '/#hakkimda', label: 'Hakkımda' },
+  { href: '/#portfolyo', label: 'Portfolyo' },
+  { href: '/#galeri', label: 'Galeri' },
+  { href: '/#iletisim', label: 'İletişim' },
 ];
 
 export default function Nav({ isim }: NavProps) {
   return (
     <nav className={styles.nav}>
       <div className={styles.inner}>
-        <a href="#" className={styles.brand}>
+        <a href="/" className={styles.brand}>
           {isim}
         </a>
         <ul className={styles.links}>
