@@ -1,0 +1,92 @@
+.contact {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.left {
+  position: relative;
+}
+
+.dot {
+  position: absolute;
+  top: -1.5rem;
+  left: -0.5rem;
+  z-index: 0;
+}
+
+.title {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+  font-weight: 900;
+  color: var(--accent);
+  text-transform: lowercase;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  font-size: clamp(3rem, 10vw, 7rem);
+  margin: 0;
+}
+
+.lead {
+  margin-top: 1.25rem;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  max-width: 34ch;
+}
+
+.email {
+  display: inline-block;
+  margin-top: 2rem;
+  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.1rem, 3vw, 1.75rem);
+  color: var(--ink);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.15rem;
+  word-break: break-word;
+}
+
+.email:hover {
+  color: var(--accent);
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.social a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.social a:hover {
+  color: var(--accent);
+}
+
+.figure {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  margin: 0;
+  background: var(--paper-alt);
+}
+
+@media (max-width: 800px) {
+  .contact {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .figure {
+    max-width: 340px;
+  }
+}
