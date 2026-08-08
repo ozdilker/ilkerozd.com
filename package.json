@@ -10,7 +10,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "seed": "node --experimental-strip-types src/scripts/seed.ts",
+    "seed": "node --experimental-strip-types src/scripts/seed.mts",
     "test": "vitest run"
   },
   "keywords": [],
