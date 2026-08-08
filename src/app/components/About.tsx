@@ -1,19 +1,12 @@
 import styles from './About.module.css';
+import { splitParagraphs } from '@/lib/text';
 
 interface AboutProps {
   metin: string;
 }
 
-/**
- * `hakkimda_metin` alanını basit biçimde paragraflara böler.
- * Ağır bir markdown kütüphanesi eklemek yerine boş satırlara göre
- * ayrılan metni <p> etiketleriyle render eder.
- */
 export default function About({ metin }: AboutProps) {
-  const paragraphs = metin
-    .split(/\n{2,}|\r\n{2,}/)
-    .map((p) => p.trim())
-    .filter(Boolean);
+  const paragraphs = splitParagraphs(metin);
 
   return (
     <section id="hakkimda" className={`container ${styles.about}`}>

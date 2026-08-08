@@ -1,0 +1,158 @@
+.section {
+  border-top: 1px solid var(--border);
+}
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.empty {
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+.thumb {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.thumb:hover .image {
+  transform: scale(1.03);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.caption {
+  padding: 0.75rem 1rem;
+}
+
+.baslik {
+  font-size: 0.95rem;
+  margin: 0 0 0.25rem;
+}
+
+.aciklama {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 100;
+}
+
+.dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90vw;
+  max-height: 90vh;
+  outline: none;
+}
+
+.imageContainer {
+  position: relative;
+  width: min(90vw, 900px);
+  height: min(70vh, 600px);
+}
+
+.enlargedImage {
+  object-fit: contain;
+}
+
+.closeButton {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(24, 24, 28, 0.8);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.navButton {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(24, 24, 28, 0.8);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.navButton:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.prevButton {
+  left: 1.5rem;
+}
+
+.nextButton {
+  right: 1.5rem;
+}
+
+.dialogCaption {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.dialogBaslik {
+  font-size: 1rem;
+  margin: 0 0 0.25rem;
+}
+
+.dialogAciklama {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0;
+}

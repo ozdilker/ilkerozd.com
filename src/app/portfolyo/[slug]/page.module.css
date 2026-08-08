@@ -1,0 +1,81 @@
+.detail {
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  max-width: 768px;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--background-alt);
+  border: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.baslik {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+}
+
+.body p {
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.body p:last-child {
+  margin-bottom: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.button {
+  display: inline-block;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 6px;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.9rem;
+}
+
+.button:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  text-decoration: none;
+}
+
+.buttonSecondary {
+  border-color: var(--border);
+  color: var(--foreground);
+}
+
+.buttonSecondary:hover {
+  background: var(--surface);
+  color: var(--accent);
+  border-color: var(--accent);
+}
