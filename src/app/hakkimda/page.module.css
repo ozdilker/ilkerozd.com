@@ -1,0 +1,65 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.head {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 1.25rem;
+}
+
+.role {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  max-width: 60ch;
+}
+
+.portrait {
+  position: relative;
+  margin: 0;
+}
+
+.dot {
+  position: absolute;
+  top: -1rem;
+  right: -0.75rem;
+  z-index: 2;
+}
+
+.imgWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+}
+
+@media (max-width: 800px) {
+  .body {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .portrait {
+    order: -1;
+    max-width: 340px;
+  }
+}
