@@ -57,19 +57,13 @@ export default function Lightbox({ items }: LightboxProps) {
   }, [activeIndex, close, showPrev, showNext]);
 
   if (items.length === 0) {
-    return (
-      <section id="galeri" className={`container ${styles.section}`}>
-        <h2 className={styles.title}>Galeri</h2>
-        <p className={styles.empty}>Henüz görsel eklenmedi.</p>
-      </section>
-    );
+    return <p className={styles.empty}>Henüz görsel eklenmedi.</p>;
   }
 
   const active = activeIndex !== null ? items[activeIndex] : null;
 
   return (
-    <section id="galeri" className={`container ${styles.section}`}>
-      <h2 className={styles.title}>Galeri</h2>
+    <div className={styles.section}>
       <div className={styles.grid}>
         {items.map((item, index) => (
           <button
@@ -151,6 +145,6 @@ export default function Lightbox({ items }: LightboxProps) {
           </div>
         </div>
       )}
-    </section>
+    </div>
   );
 }
