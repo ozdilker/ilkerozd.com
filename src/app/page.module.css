@@ -1,0 +1,46 @@
+.gallery {
+  border-top: 1px solid var(--border);
+}
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+.item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.caption {
+  padding: 0.75rem 1rem;
+}
+
+.baslik {
+  font-size: 0.95rem;
+  margin: 0 0 0.25rem;
+}
+
+.aciklama {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0;
+}

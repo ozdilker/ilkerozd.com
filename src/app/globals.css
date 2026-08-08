@@ -1,9 +1,15 @@
 :root {
   --background: #0d0d0f;
+  --background-alt: #131316;
+  --surface: #18181c;
+  --border: #2a2a30;
   --foreground: #e4e4e7;
+  --muted: #9a9aa2;
   --accent: #f5a623;
+  --accent-foreground: #1a1305;
   --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Consolas,
     'Liberation Mono', monospace;
+  --max-width: 960px;
 }
 
 * {
@@ -16,12 +22,68 @@ body {
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-mono);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
 
 a {
   color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+section {
+  padding: 4rem 1.5rem;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-foreground);
 }
