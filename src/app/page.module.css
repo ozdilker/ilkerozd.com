@@ -1,46 +1,106 @@
-.gallery {
-  border-top: 1px solid var(--border);
-}
-
-.title {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.grid {
+.cover {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: 1fr 1.4fr;
+  grid-template-areas:
+    'meta heading'
+    'meta hero';
+  gap: 2rem 3rem;
+  align-items: start;
+  min-height: 70vh;
 }
 
-.item {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--surface);
+.meta {
+  grid-area: meta;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 0.5rem;
+  border-top: 2px solid var(--ink);
 }
 
-.imageWrapper {
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  padding-top: 1rem;
+}
+
+.thumb {
+  position: relative;
+  width: 100%;
+  max-width: 180px;
+  aspect-ratio: 3 / 4;
+}
+
+.intro {
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 34ch;
+  color: var(--ink);
+}
+
+.headingWrap {
+  grid-area: heading;
+  position: relative;
+  padding-top: 0.5rem;
+}
+
+.dot {
+  position: absolute;
+  top: -0.75rem;
+  left: -0.5rem;
+  z-index: 0;
+}
+
+.name {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+  font-weight: 900;
+  color: var(--accent);
+  text-transform: lowercase;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  font-size: clamp(3.5rem, 12vw, 9rem);
+  margin: 0;
+  word-break: break-word;
+}
+
+.kicker {
+  display: block;
+  margin-top: 0.75rem;
+  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+  font-weight: 800;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.hero {
+  grid-area: hero;
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
-}
-
-.image {
-  object-fit: cover;
-}
-
-.caption {
-  padding: 0.75rem 1rem;
-}
-
-.baslik {
-  font-size: 0.95rem;
-  margin: 0 0 0.25rem;
-}
-
-.aciklama {
-  font-size: 0.8rem;
-  color: var(--muted);
   margin: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .cover {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'heading'
+      'hero'
+      'meta';
+    gap: 1.75rem;
+  }
+
+  .meta {
+    border-top: none;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 1.25rem;
+  }
 }

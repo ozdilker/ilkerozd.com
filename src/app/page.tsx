@@ -1,56 +1,48 @@
-import Image from 'next/image';
-import { getSettings, getFeaturedProducts, getGallery } from '@/lib/queries';
-import Nav from './components/Nav';
-import Hero from './components/Hero';
-import About from './components/About';
-import ProductGrid from './components/ProductGrid';
-import ContactSection from './components/ContactSection';
-import Footer from './components/Footer';
+import { getSettings } from '@/lib/queries';
+import PageShell from './components/PageShell';
+import RedDot from './components/editorial/RedDot';
+import BwImage from './components/editorial/BwImage';
 import styles from './page.module.css';
 
 export const dynamic = 'force-static';
 
 export default function Home() {
   const settings = getSettings();
-  const products = getFeaturedProducts();
-  const gallery = getGallery().slice(0, 3);
 
   return (
-    <>
-      <Nav isim={settings.isim} />
-      <main>
-        <Hero settings={settings} />
-        <About metin={settings.hakkimda_metin} />
-        <ProductGrid products={products} />
-        {gallery.length > 0 && (
-          <section id="galeri" className={`container ${styles.gallery}`}>
-            <h2 className={styles.title}>Galeri</h2>
-            <div className={styles.grid}>
-              {gallery.map((item) => (
-                <figure key={item.id} className={styles.item}>
-                  <div className={styles.imageWrapper}>
-                    <Image
-                      src={item.gorsel}
-                      alt={item.baslik}
-                      fill
-                      className={styles.image}
-                      sizes="(max-width: 640px) 100vw, 33vw"
-                    />
-                  </div>
-                  {(item.baslik || item.aciklama) && (
-                    <figcaption className={styles.caption}>
-                      {item.baslik && <p className={styles.baslik}>{item.baslik}</p>}
-                      {item.aciklama && <p className={styles.aciklama}>{item.aciklama}</p>}
-                    </figcaption>
-                  )}
-                </figure>
-              ))}
+    <PageShell>
+      <section className={styles.cover}>
+        <div className={styles.meta}>
+          <span className={styles.eyebrow}>{settings.unvan}</span>
+          {settings.kapak_gorsel_2 ? (
+            <div className={styles.thumb}>
+              <BwImage
+                src={settings.kapak_gorsel_2}
+                alt={settings.isim}
+                fill
+                sizes="(max-width: 640px) 40vw, 160px"
+              />
             </div>
-          </section>
-        )}
-        <ContactSection settings={settings} />
-      </main>
-      <Footer isim={settings.isim} />
-    </>
+          ) : null}
+          <p className={styles.intro}>{settings.hero_tagline}</p>
+        </div>
+
+        <div className={styles.headingWrap}>
+          <RedDot size={64} className={styles.dot} />
+          <h1 className={styles.name}>{settings.isim}</h1>
+          <span className={styles.kicker}>portfolyo</span>
+        </div>
+
+        <figure className={styles.hero}>
+          <BwImage
+            src={settings.hero_gorsel}
+            alt={settings.isim}
+            fill
+            sizes="(max-width: 900px) 100vw, 60vw"
+            priority
+          />
+        </figure>
+      </section>
+    </PageShell>
   );
 }
