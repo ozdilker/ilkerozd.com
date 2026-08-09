@@ -12,10 +12,10 @@ db.prepare(
   isim: 'İlker Özdemir',
   unvan: 'Yazılım Geliştirici',
   hero_tagline: 'Fikirleri çalışan yazılımlara dönüştürüyorum.',
-  hero_gorsel: '/hero.png',
+  hero_gorsel: '/hero.jpg',
   kapak_gorsel_2: '',
-  hakkimda_gorsel: '/hero.png',
-  iletisim_gorsel: '/hero.png',
+  hakkimda_gorsel: '/hero.jpg',
+  iletisim_gorsel: '/hero.jpg',
   hakkimda_metin:
     'Merhaba, ben İlker. Web ve masaüstü uygulamalar geliştiren bir yazılım geliştiricisiyim. Temiz kod ve kullanıcı deneyimine önem veririm.',
   email: 'ozd.ilker@gmail.com',
@@ -42,7 +42,7 @@ const products = [
     kisa_aciklama: 'Next.js ve SQLite ile geliştirilmiş kişisel portfolyo sitesi.',
     detay:
       'Next.js, TypeScript ve better-sqlite3 kullanılarak geliştirilen, sunucu tarafında render edilen kişisel portfolyo sitesi.',
-    kapak_gorsel: '/hero.png',
+    kapak_gorsel: '/hero.jpg',
     canli_link: 'https://ilkerozd.com',
     github_link: 'https://github.com/ozdilker/ilkerozd.com',
     teknolojiler: JSON.stringify(['Next.js', 'TypeScript', 'SQLite']),
@@ -55,7 +55,7 @@ const products = [
     slug: 'gorev-takip-uygulamasi',
     kisa_aciklama: 'Basit ve hızlı bir görev/yapılacaklar listesi uygulaması.',
     detay: 'React ve yerel depolama kullanılarak geliştirilmiş bir görev takip uygulaması.',
-    kapak_gorsel: '/hero.png',
+    kapak_gorsel: '/hero.jpg',
     canli_link: '',
     github_link: 'https://github.com/ozdilker/gorev-takip',
     teknolojiler: JSON.stringify(['React', 'Vite', 'CSS']),
@@ -68,7 +68,7 @@ const products = [
     slug: 'hava-durumu-paneli',
     kisa_aciklama: 'Gerçek zamanlı hava durumu bilgisi gösteren küçük bir panel uygulaması.',
     detay: 'Açık bir hava durumu API’si ile entegre çalışan, güncel verileri gösteren bir gösterge paneli.',
-    kapak_gorsel: '/hero.png',
+    kapak_gorsel: '/hero.jpg',
     canli_link: '',
     github_link: 'https://github.com/ozdilker/hava-durumu-paneli',
     teknolojiler: JSON.stringify(['JavaScript', 'REST API']),
@@ -90,9 +90,9 @@ const insertGalleryItem = db.prepare(
 );
 
 const galleryItems = [
-  { id: 1, gorsel: '/hero.png', baslik: 'Çalışma Ortamı', aciklama: 'Günlük çalışma ortamımdan bir kare.', sira: 1 },
-  { id: 2, gorsel: '/hero.png', baslik: 'Proje Ekranı', aciklama: 'Geliştirdiğim bir projeden ekran görüntüsü.', sira: 2 },
-  { id: 3, gorsel: '/hero.png', baslik: 'Topluluk Etkinliği', aciklama: 'Katıldığım bir yazılım etkinliğinden.', sira: 3 },
+  { id: 1, gorsel: '/hero.jpg', baslik: 'Çalışma Ortamı', aciklama: 'Günlük çalışma ortamımdan bir kare.', sira: 1 },
+  { id: 2, gorsel: '/hero.jpg', baslik: 'Proje Ekranı', aciklama: 'Geliştirdiğim bir projeden ekran görüntüsü.', sira: 2 },
+  { id: 3, gorsel: '/hero.jpg', baslik: 'Topluluk Etkinliği', aciklama: 'Katıldığım bir yazılım etkinliğinden.', sira: 3 },
 ];
 
 for (const item of galleryItems) {
