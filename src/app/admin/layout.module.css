@@ -1,6 +1,17 @@
 .shell {
+  /* Admin'e özel açık-tema, yüksek-kontrast token'lar (public editoryal
+     site bu değişkenleri kullanmaz; buraya scope'lu kalır). */
+  --surface: #ffffff;
+  --background-alt: #f1efe7;
+  --border: #8f8878;
+  --foreground: #1a1a18;
+  --accent-foreground: #ffffff;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
   display: flex;
   min-height: 100vh;
+  background: var(--paper);
+  color: var(--foreground);
 }
 
 .sidebar {
