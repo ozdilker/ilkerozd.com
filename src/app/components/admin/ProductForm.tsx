@@ -21,6 +21,8 @@ interface FormState {
   canli_link: string;
   github_link: string;
   teknolojiler: string[];
+  tur: 'web' | 'mobil';
+  gorseller: string[];
   sira: number;
   yayinda: boolean;
 }
@@ -36,6 +38,8 @@ function toFormState(product: Product | null): FormState {
       canli_link: '',
       github_link: '',
       teknolojiler: [],
+      tur: 'web',
+      gorseller: [],
       sira: 0,
       yayinda: true,
     };
@@ -49,6 +53,8 @@ function toFormState(product: Product | null): FormState {
     canli_link: product.canli_link,
     github_link: product.github_link,
     teknolojiler: product.teknolojiler,
+    tur: product.tur,
+    gorseller: product.gorseller,
     sira: product.sira,
     yayinda: product.yayinda,
   };
@@ -70,6 +76,18 @@ export default function ProductForm({ product }: ProductFormProps) {
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
+  function addGorsel(path: string) {
+    if (!path) return;
+    setForm((prev) => ({ ...prev, gorseller: [...prev.gorseller, path] }));
+  }
+
+  function removeGorsel(index: number) {
+    setForm((prev) => ({
+      ...prev,
+      gorseller: prev.gorseller.filter((_, i) => i !== index),
+    }));
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!form.baslik.trim()) {
@@ -89,6 +107,8 @@ export default function ProductForm({ product }: ProductFormProps) {
         canli_link: form.canli_link,
         github_link: form.github_link,
         teknolojiler: form.teknolojiler,
+        tur: form.tur,
+        gorseller: form.gorseller,
         sira: form.sira,
         yayinda: form.yayinda,
       };
@@ -153,6 +173,24 @@ export default function ProductForm({ product }: ProductFormProps) {
         <ImageUpload value={form.kapak_gorsel} onChange={(path) => update('kapak_gorsel', path)} />
       </div>
 
+      <div className={styles.field}>
+        <span>Ürün görselleri (detay galerisi)</span>
+        {form.gorseller.length > 0 ? (
+          <ul className={styles.gorselList}>
+            {form.gorseller.map((src, i) => (
+              <li key={`${src}-${i}`} className={styles.gorselItem}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={src} alt="" />
+                <button type="button" onClick={() => removeGorsel(i)}>
+                  Kaldır
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+        <ImageUpload value="" onChange={addGorsel} />
+      </div>
+
       <label className={styles.field}>
         <span>Canlı link</span>
         <input value={form.canli_link} onChange={(e) => update('canli_link', e.target.value)} />
@@ -167,6 +205,17 @@ export default function ProductForm({ product }: ProductFormProps) {
         <span>Teknolojiler</span>
         <TagInput value={form.teknolojiler} onChange={(tags) => update('teknolojiler', tags)} />
       </div>
+
+      <label className={styles.field}>
+        <span>Tür</span>
+        <select
+          value={form.tur}
+          onChange={(e) => update('tur', e.target.value === 'mobil' ? 'mobil' : 'web')}
+        >
+          <option value="web">Web</option>
+          <option value="mobil">Mobil</option>
+        </select>
+      </label>
 
       <label className={styles.field}>
         <span>Sıra</span>

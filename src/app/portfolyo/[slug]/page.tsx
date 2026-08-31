@@ -3,8 +3,10 @@ import { getPublishedProducts, getProductBySlug } from '@/lib/queries';
 import { splitParagraphs } from '@/lib/text';
 import PageShell from '../../components/PageShell';
 import RedDot from '../../components/editorial/RedDot';
-import BwImage from '../../components/editorial/BwImage';
+import ProductGallery from '../../components/ProductGallery';
 import styles from './page.module.css';
+
+const TUR_ETIKET: Record<'web' | 'mobil', string> = { web: 'Web', mobil: 'Mobil' };
 
 export const dynamic = 'force-static';
 
@@ -25,14 +27,20 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     notFound();
   }
 
-  const { baslik, detay, kapak_gorsel, canli_link, github_link, teknolojiler } = product;
+  const { baslik, detay, kapak_gorsel, canli_link, github_link, teknolojiler, tur, gorseller } =
+    product;
   const paragraphs = splitParagraphs(detay);
+  // Galeri: kapak + ek görseller (kapak zaten listede ise tekrarlama).
+  const galeriGorselleri = [kapak_gorsel, ...gorseller].filter(
+    (src, i, arr) => src && arr.indexOf(src) === i
+  );
 
   return (
     <PageShell>
       <article className={styles.detail}>
         <header className={styles.head}>
           <RedDot size={40} className={styles.dot} />
+          <span className={styles.tur}>{TUR_ETIKET[tur]}</span>
           <h1 className={styles.baslik}>{baslik}</h1>
           {teknolojiler.length > 0 ? (
             <ul className={styles.tags}>
@@ -43,16 +51,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
           ) : null}
         </header>
 
-        {kapak_gorsel ? (
-          <figure className={styles.figure}>
-            <BwImage
-              src={kapak_gorsel}
-              alt={baslik}
-              fill
-              sizes="(max-width: 1200px) 100vw, 1200px"
-              priority
-            />
-          </figure>
+        {galeriGorselleri.length > 0 ? (
+          <ProductGallery images={galeriGorselleri} baslik={baslik} />
         ) : null}
 
         <div className={styles.body}>

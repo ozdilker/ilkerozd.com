@@ -78,15 +78,10 @@ button {
   font-family: inherit;
 }
 
-/* Editoryal siyah-beyaz görsel işleme: içerik görselleri gri tonlu,
-   hover'da renk açılır. */
+/* İçerik görselleri (next/image fill): sabit-oranlı kutuya kırparak sığar —
+   renkli ve asla gerilmez/deforme olmaz. */
 .bw {
-  filter: grayscale(1) contrast(1.02);
-  transition: filter 0.5s ease;
-}
-
-.bw:hover {
-  filter: grayscale(0);
+  object-fit: cover;
 }
 
 ::selection {

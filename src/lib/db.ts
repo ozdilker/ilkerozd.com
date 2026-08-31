@@ -20,6 +20,8 @@ export function initSchema(db: Database.Database): void {
       canli_link TEXT NOT NULL DEFAULT '',
       github_link TEXT NOT NULL DEFAULT '',
       teknolojiler TEXT NOT NULL DEFAULT '[]',
+      tur TEXT NOT NULL DEFAULT 'web',
+      gorseller TEXT NOT NULL DEFAULT '[]',
       sira INTEGER NOT NULL DEFAULT 0,
       yayinda INTEGER NOT NULL DEFAULT 1,
       olusturma TEXT NOT NULL DEFAULT (datetime('now'))
@@ -51,6 +53,20 @@ export function initSchema(db: Database.Database): void {
   `);
 
   db.prepare('INSERT OR IGNORE INTO settings (id) VALUES (1)').run();
+
+  // Migration: daha eski şemayla oluşturulmuş (ör. commit'li) bir products
+  // tablosuna yeni kolonları ekler. CREATE TABLE IF NOT EXISTS mevcut tabloyu
+  // değiştirmez; bu yüzden eksik kolonları ALTER ile ekliyoruz (idempotent,
+  // mevcut satırlar varsayılan değerle korunur).
+  const productCols = new Set(
+    (db.prepare('PRAGMA table_info(products)').all() as { name: string }[]).map((c) => c.name)
+  );
+  if (!productCols.has('tur')) {
+    db.exec("ALTER TABLE products ADD COLUMN tur TEXT NOT NULL DEFAULT 'web'");
+  }
+  if (!productCols.has('gorseller')) {
+    db.exec("ALTER TABLE products ADD COLUMN gorseller TEXT NOT NULL DEFAULT '[]'");
+  }
 }
 
 /**

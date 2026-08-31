@@ -17,6 +17,21 @@
   z-index: 0;
 }
 
+.tur {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--paper);
+  background: var(--accent);
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+}
+
 .baslik {
   position: relative;
   z-index: 1;

@@ -12,6 +12,8 @@ interface ProductRow {
   canli_link: string;
   github_link: string;
   teknolojiler: string;
+  tur: string;
+  gorseller: string;
   sira: number;
   yayinda: number;
   olusturma: string;
@@ -22,6 +24,8 @@ function mapProduct(row: ProductRow): Product {
   return {
     ...row,
     teknolojiler: JSON.parse(row.teknolojiler) as string[],
+    gorseller: JSON.parse(row.gorseller) as string[],
+    tur: row.tur === 'mobil' ? 'mobil' : 'web',
     yayinda: row.yayinda === 1,
   };
 }

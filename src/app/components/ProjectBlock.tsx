@@ -10,10 +10,11 @@ interface ProjectBlockProps {
 
 /** Portfolyo listesinde numaralı editoryal proje bloğu. */
 export default function ProjectBlock({ product, index }: ProjectBlockProps) {
-  const { baslik, slug, kisa_aciklama, kapak_gorsel, canli_link, github_link, teknolojiler } =
+  const { baslik, slug, kisa_aciklama, kapak_gorsel, canli_link, github_link, teknolojiler, tur } =
     product;
   const numara = String(index).padStart(2, '0');
   const flip = index % 2 === 0;
+  const turEtiket = tur === 'mobil' ? 'Mobil' : 'Web';
 
   return (
     <article className={`${styles.block} ${flip ? styles.flip : ''}`}>
@@ -31,7 +32,10 @@ export default function ProjectBlock({ product, index }: ProjectBlockProps) {
       </figure>
 
       <div className={styles.info}>
-        <span className={styles.numara}>{numara}</span>
+        <div className={styles.topRow}>
+          <span className={styles.numara}>{numara}</span>
+          <span className={styles.tur}>{turEtiket}</span>
+        </div>
         <h2 className={styles.baslik}>
           <Link href={`/portfolyo/${slug}`}>{baslik}</Link>
         </h2>

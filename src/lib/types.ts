@@ -8,6 +8,8 @@ export interface Product {
   canli_link: string;
   github_link: string;
   teknolojiler: string[];
+  tur: 'web' | 'mobil';
+  gorseller: string[];
   sira: number;
   yayinda: boolean;
   olusturma: string;

@@ -47,8 +47,8 @@ export function createProduct(data: ProductInput, db: Database.Database = getDb(
   const result = db
     .prepare(
       `INSERT INTO products
-        (baslik, slug, kisa_aciklama, detay, kapak_gorsel, canli_link, github_link, teknolojiler, sira, yayinda)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        (baslik, slug, kisa_aciklama, detay, kapak_gorsel, canli_link, github_link, teknolojiler, tur, gorseller, sira, yayinda)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
     )
     .run(
       data.baslik,
@@ -59,6 +59,8 @@ export function createProduct(data: ProductInput, db: Database.Database = getDb(
       data.canli_link ?? '',
       data.github_link ?? '',
       JSON.stringify(data.teknolojiler ?? []),
+      data.tur === 'mobil' ? 'mobil' : 'web',
+      JSON.stringify(data.gorseller ?? []),
       data.sira ?? 0,
       data.yayinda === undefined || data.yayinda ? 1 : 0
     );
@@ -106,6 +108,14 @@ export function updateProduct(
   if (data.teknolojiler !== undefined) {
     fields.push('teknolojiler = ?');
     values.push(JSON.stringify(data.teknolojiler));
+  }
+  if (data.tur !== undefined) {
+    fields.push('tur = ?');
+    values.push(data.tur === 'mobil' ? 'mobil' : 'web');
+  }
+  if (data.gorseller !== undefined) {
+    fields.push('gorseller = ?');
+    values.push(JSON.stringify(data.gorseller));
   }
   if (data.sira !== undefined) {
     fields.push('sira = ?');

@@ -141,3 +141,32 @@ describe('updateSettings', () => {
     expect(s.iletisim_gorsel).toBe('/uploads/z.jpg');
   });
 });
+
+describe('ürün tür ve görseller', () => {
+  it('createProduct tur ve gorseller yazar, getProductBySlug doğru döndürür', () => {
+    const db = seedDb();
+    createProduct(
+      {
+        baslik: 'Mobil Uygulama',
+        slug: 'mobil-uygulama',
+        tur: 'mobil',
+        gorseller: ['/uploads/a.jpg', '/uploads/b.png'],
+      },
+      db,
+    );
+    const p = getProductBySlug('mobil-uygulama', db);
+    expect(p?.tur).toBe('mobil');
+    expect(p?.gorseller).toEqual(['/uploads/a.jpg', '/uploads/b.png']);
+  });
+
+  it('tur belirtilmezse web varsayılır; updateProduct gorseller günceller', () => {
+    const db = seedDb();
+    const id = createProduct({ baslik: 'Web Sitesi', slug: 'web-sitesi' }, db);
+    expect(getProductBySlug('web-sitesi', db)?.tur).toBe('web');
+
+    updateProduct(id, { gorseller: ['/uploads/x.jpg'], tur: 'mobil' }, db);
+    const p = getProductBySlug('web-sitesi', db);
+    expect(p?.tur).toBe('mobil');
+    expect(p?.gorseller).toEqual(['/uploads/x.jpg']);
+  });
+});

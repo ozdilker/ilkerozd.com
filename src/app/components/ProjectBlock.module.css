@@ -28,6 +28,12 @@
   position: relative;
 }
 
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
 .numara {
   font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
   font-weight: 900;
@@ -35,6 +41,19 @@
   line-height: 1;
   color: var(--accent);
   display: block;
+}
+
+.tur {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--paper);
+  background: var(--accent);
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+  align-self: flex-start;
+  margin-top: 0.35rem;
 }
 
 .baslik {

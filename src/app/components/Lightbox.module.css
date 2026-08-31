@@ -41,12 +41,10 @@
 
 .image {
   object-fit: cover;
-  filter: grayscale(1) contrast(1.02);
-  transition: filter 0.5s ease, transform 0.4s ease;
+  transition: transform 0.4s ease;
 }
 
 .thumb:hover .image {
-  filter: grayscale(0);
   transform: scale(1.03);
 }
 
