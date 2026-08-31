@@ -6,7 +6,8 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1rem 1.5rem;
+  flex-wrap: wrap;
 }
 
 .mark {
@@ -14,6 +15,24 @@
   font-weight: 900;
   text-transform: lowercase;
   letter-spacing: -0.02em;
+}
+
+.legal {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.legal a {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.legal a:hover {
+  color: var(--accent-strong);
 }
 
 .year {

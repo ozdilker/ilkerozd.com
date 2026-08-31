@@ -1,0 +1,227 @@
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.masthead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 1rem;
+}
+
+.pageTitle {
+  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+  font-weight: 900;
+  color: var(--accent);
+  text-transform: lowercase;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  margin: 0;
+}
+
+.updated {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.tabs {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0 3rem;
+  flex-wrap: wrap;
+}
+
+.tabs a {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid transparent;
+}
+
+.tabs a:hover {
+  color: var(--accent-strong);
+  border-bottom-color: var(--accent);
+}
+
+.doc {
+  scroll-margin-top: 5rem;
+  padding-top: 2rem;
+}
+
+.doc + .doc {
+  margin-top: 4rem;
+  border-top: 1px solid var(--hairline);
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.docTitle {
+  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+  font-weight: 900;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-size: clamp(1.9rem, 5vw, 2.75rem);
+  margin: 0 0 1.25rem;
+}
+
+.intro {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+
+.h {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 2.5rem 0 0.75rem;
+}
+
+.num {
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.doc p {
+  line-height: 1.75;
+  margin: 0 0 1rem;
+  max-width: 68ch;
+}
+
+.doc ul {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  max-width: 68ch;
+}
+
+.doc li {
+  position: relative;
+  padding-left: 1.4rem;
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+}
+
+.doc li::before {
+  content: '';
+  position: absolute;
+  left: 0.15rem;
+  top: 0.72em;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.doc strong {
+  font-weight: 700;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  margin: 0.5rem 0 1.75rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  min-width: 480px;
+}
+
+.table caption {
+  text-align: left;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid var(--hairline);
+  vertical-align: top;
+}
+
+.table th {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.contactCard {
+  background: var(--paper-alt);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 1.25rem 1.4rem;
+  margin: 1.5rem 0 0;
+  max-width: 68ch;
+}
+
+.contactCard h4 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.contactCard dl {
+  margin: 0;
+}
+
+.contactRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.contactRow:first-of-type {
+  border-top: none;
+}
+
+.contactRow dt {
+  color: var(--muted);
+}
+
+.contactRow dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+}
