@@ -47,3 +47,62 @@
   font-weight: 700;
   text-decoration: none;
 }
+
+.checkError {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 999px;
+  background: var(--accent-strong);
+  color: var(--paper);
+  font-size: 1.75rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--hairline);
+  background: var(--paper-alt);
+  color: var(--ink);
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.error {
+  color: var(--accent-strong);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.submit {
+  padding: 0.9rem 2rem;
+  border-radius: 999px;
+  border: none;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
