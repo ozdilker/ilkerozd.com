@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'Özet uygulaması gizlilik politikası ve kullanım şartları.',
 };
 
-const GUNCELLEME = '25 Ağustos 2026';
+const GUNCELLEME = '23 Eylül 2026';
 
 export default function YasalPage() {
   return (
@@ -91,7 +91,7 @@ export default function YasalPage() {
           <ul>
             <li>Hesabına giriş yapmanı ve özetlerine erişmeni sağlamak</li>
             <li>Yüklediğin içeriği okuyup bir özet üretmek</li>
-            <li>Ücretsiz plandaki günlük kullanım hakkını hesaplamak</li>
+            <li>Ücretsiz plandaki toplam özet hakkını hesaplamak</li>
             <li>Abonelik durumuna göre Özet Plus özelliklerini açmak/kapatmak</li>
             <li>Teknik sorunları tespit edip düzeltmek</li>
           </ul>
@@ -131,9 +131,10 @@ export default function YasalPage() {
             <span className={styles.num}>4.</span>Saklama ve silme
           </h3>
           <p>
-            Hesabın açık olduğu sürece özetlerin saklanır. Hesabını silmek istersen aşağıdaki
-            iletişim adresinden bize ulaşabilirsin; talebini aldıktan sonra makul bir süre
-            içinde hesabını ve özetlerini kalıcı olarak sileriz.
+            Hesabın açık olduğu sürece özetlerin saklanır. Hesabını uygulama içinden, Profil
+            ekranındaki &quot;Hesabı sil&quot; seçeneğiyle istediğin an kendin silebilirsin; bu
+            işlem hesabını ve tüm özetlerini kalıcı olarak kaldırır. Bunun yerine aşağıdaki
+            iletişim adresinden bize ulaşarak da talep edebilirsin.
           </p>
 
           <h3 className={styles.h}>
@@ -174,7 +175,7 @@ export default function YasalPage() {
             <dl>
               <div className={styles.contactRow}>
                 <dt>E-posta</dt>
-                <dd>gizlilik@ozet.app</dd>
+                <dd>ozd.ilker@gmail.com</dd>
               </div>
               <div className={styles.contactRow}>
                 <dt>Yanıt süresi</dt>
@@ -234,7 +235,6 @@ export default function YasalPage() {
             <li>Fiyatlar, satın alma ekranında mağaza tarafından gösterilir.</li>
             <li>Abonelik, iptal etmediğin sürece dönem sonunda otomatik yenilenir.</li>
             <li>İptal işlemini App Store / Google Play hesap ayarlarından yapabilirsin.</li>
-            <li>Ücretsiz deneme süresi, süre bitmeden iptal edilmezse ücretli döneme döner.</li>
             <li>İadeler ilgili mağazanın (Apple / Google) politikasına tabidir.</li>
           </ul>
 
@@ -279,7 +279,7 @@ export default function YasalPage() {
             <dl>
               <div className={styles.contactRow}>
                 <dt>E-posta</dt>
-                <dd>destek@ozet.app</dd>
+                <dd>ozd.ilker@gmail.com</dd>
               </div>
             </dl>
           </div>

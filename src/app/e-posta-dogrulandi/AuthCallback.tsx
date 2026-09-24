@@ -10,6 +10,85 @@ const SUPABASE_ANON_KEY =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlrZmFibXdqenF1ZHV3YXN6Z3ZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODczNzI4NDcsImV4cCI6MjEwMjk0ODg0N30.JBVZJqSLGbpmOa9Myfh_iJDUqk2d6_3qPnwERarI2VU';
 
 type Mode = 'loading' | 'confirmed' | 'recovery' | 'recovery-done' | 'error';
+type Lang = 'tr' | 'en';
+
+/**
+ * Sayfa tek ve statik; dil istemcide, tarayıcı dilinden seçilir (mobil
+ * uygulamadaki mantığın aynısı): navigator.language 'tr' ile başlıyorsa
+ * Türkçe, diğer her dilde İngilizce. Ayrı bir /en sayfası yok — Supabase Site
+ * URL'i tek adrese işaret ediyor.
+ */
+const TEXT = {
+  tr: {
+    errorTitle: 'Bağlantının süresi dolmuş',
+    linkInvalid: 'Bu bağlantı artık geçerli değil.',
+    linkExpiredOrInvalid: 'Bu bağlantı geçersiz ya da süresi dolmuş.',
+    errorHint: 'Uygulamaya dönüp işlemi tekrar başlatabilirsin.',
+    confirmedTitle: 'E-postan doğrulandı',
+    confirmedText:
+      'Hesabın başarıyla doğrulandı. Şimdi Özet uygulamasına dönüp giriş yapabilirsin.',
+    openApp: "Özet'i Aç",
+    doneTitle: 'Şifren güncellendi',
+    doneText:
+      'Yeni şifreni kaydettik. Şimdi Özet uygulamasına dönüp yeni şifrenle giriş yapabilirsin.',
+    recoveryTitle: 'Yeni şifre belirle',
+    recoveryText: 'Özet hesabın için yeni bir şifre gir.',
+    newPassword: 'Yeni şifre',
+    newPasswordAgain: 'Yeni şifre (tekrar)',
+    save: 'Şifreyi Kaydet',
+    saving: 'Kaydediliyor…',
+    errTooShort: 'Şifre en az 6 karakter olmalı.',
+    errMismatch: 'Şifreler eşleşmiyor.',
+    errUpdateFailed: 'Şifre güncellenemedi.',
+    errSamePassword: 'Yeni şifre eskisinden farklı olmalı.',
+  },
+  en: {
+    errorTitle: 'This link has expired',
+    linkInvalid: 'This link is no longer valid.',
+    linkExpiredOrInvalid: 'This link is invalid or has expired.',
+    errorHint: 'Go back to the app and start again.',
+    confirmedTitle: 'Your email is confirmed',
+    confirmedText:
+      'Your account is verified. Head back to the Ozet app to sign in.',
+    openApp: 'Open Ozet',
+    doneTitle: 'Password updated',
+    doneText: "We've saved your new password. Head back to the Ozet app and sign in with it.",
+    recoveryTitle: 'Set a new password',
+    recoveryText: 'Choose a new password for your Ozet account.',
+    newPassword: 'New password',
+    newPasswordAgain: 'Confirm new password',
+    save: 'Save password',
+    saving: 'Saving…',
+    errTooShort: 'Password must be at least 6 characters.',
+    errMismatch: "Passwords don't match.",
+    errUpdateFailed: "Couldn't update your password.",
+    errSamePassword: 'Your new password must be different from the old one.',
+  },
+} as const;
+
+function detectLang(): Lang {
+  return (navigator.language || '').toLowerCase().startsWith('tr') ? 'tr' : 'en';
+}
+
+/**
+ * Supabase'in ham (İngilizce) hata metni kullanıcıya ASLA gösterilmez — iki dilde
+ * de aynı davranış: bilinen durumlar seçilen dilde karşılanır, tanınmayan her şey
+ * genel mesaja düşer. Ham metin yalnızca tarayıcı konsoluna yazılır (hata ayıklama).
+ */
+function localizeServerMessage(
+  raw: string | null | undefined,
+  lang: Lang,
+  fallback: string
+): string {
+  const t = TEXT[lang];
+  if (raw) {
+    console.error('[auth-callback] server message:', raw);
+    if (/different from the old password/i.test(raw)) return t.errSamePassword;
+    if (/at least \d+ characters/i.test(raw)) return t.errTooShort;
+    if (/expired|invalid/i.test(raw)) return t.linkExpiredOrInvalid;
+  }
+  return fallback;
+}
 
 /**
  * Supabase'in Site URL'i olarak tek bu sayfa tanımlı; hem e-posta doğrulama
@@ -18,13 +97,22 @@ type Mode = 'loading' | 'confirmed' | 'recovery' | 'recovery-done' | 'error';
  */
 export default function AuthCallback() {
   const [mode, setMode] = useState<Mode>('loading');
+  // Dil, sayfa istemcide açıldığında bir kez belirlenir. Sunucuda render edilen
+  // (statik) çıktı 'loading' modunda boş olduğu için yanlış dilde bir flaş yok.
+  const [lang, setLang] = useState<Lang>('en');
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
+  const t = TEXT[lang];
+
   useEffect(() => {
+    const detected = detectLang();
+    setLang(detected);
+    document.documentElement.lang = detected;
+
     const raw = window.location.hash.startsWith('#')
       ? window.location.hash.slice(1)
       : window.location.hash;
@@ -34,7 +122,8 @@ export default function AuthCallback() {
     const err = params.get('error_description') || params.get('error');
 
     if (err) {
-      setErrorMsg(decodeURIComponent(err.replace(/\+/g, ' ')));
+      const decoded = decodeURIComponent(err.replace(/\+/g, ' '));
+      setErrorMsg(localizeServerMessage(decoded, detected, TEXT[detected].linkInvalid));
       setMode('error');
       return;
     }
@@ -49,11 +138,11 @@ export default function AuthCallback() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (password.length < 6) {
-      setErrorMsg('Şifre en az 6 karakter olmalı.');
+      setErrorMsg(t.errTooShort);
       return;
     }
     if (password !== password2) {
-      setErrorMsg('Şifreler eşleşmiyor.');
+      setErrorMsg(t.errMismatch);
       return;
     }
     setErrorMsg(null);
@@ -70,11 +159,16 @@ export default function AuthCallback() {
       });
       if (!res.ok) {
         const json = await res.json().catch(() => null);
-        throw new Error(json?.msg ?? json?.error_description ?? 'Şifre güncellenemedi.');
+        setErrorMsg(
+          localizeServerMessage(json?.msg ?? json?.error_description, lang, t.errUpdateFailed)
+        );
+        return;
       }
       setMode('recovery-done');
     } catch (err: unknown) {
-      setErrorMsg(err instanceof Error ? err.message : 'Şifre güncellenemedi.');
+      // Ağ hatası gibi ham tarayıcı metinleri de kullanıcıya gösterilmez.
+      console.error('[auth-callback] password update failed:', err);
+      setErrorMsg(t.errUpdateFailed);
     } finally {
       setSubmitting(false);
     }
@@ -86,10 +180,9 @@ export default function AuthCallback() {
     return (
       <div className={styles.wrap}>
         <span className={styles.checkError}>!</span>
-        <h1 className={styles.title}>Bağlantının süresi dolmuş</h1>
+        <h1 className={styles.title}>{t.errorTitle}</h1>
         <p className={styles.text}>
-          {errorMsg ?? 'Bu bağlantı artık geçerli değil.'} Uygulamaya dönüp işlemi tekrar
-          başlatabilirsin.
+          {errorMsg ?? t.linkInvalid} {t.errorHint}
         </p>
       </div>
     );
@@ -99,13 +192,10 @@ export default function AuthCallback() {
     return (
       <div className={styles.wrap}>
         <span className={styles.check}>✓</span>
-        <h1 className={styles.title}>E-postan doğrulandı</h1>
-        <p className={styles.text}>
-          Hesabın başarıyla doğrulandı. Şimdi Özet uygulamasına dönüp e-posta ve şifrenle
-          giriş yapabilirsin.
-        </p>
+        <h1 className={styles.title}>{t.confirmedTitle}</h1>
+        <p className={styles.text}>{t.confirmedText}</p>
         <a className={styles.button} href="ozetapp://">
-          Özet&apos;i Aç
+          {t.openApp}
         </a>
       </div>
     );
@@ -115,13 +205,10 @@ export default function AuthCallback() {
     return (
       <div className={styles.wrap}>
         <span className={styles.check}>✓</span>
-        <h1 className={styles.title}>Şifren güncellendi</h1>
-        <p className={styles.text}>
-          Yeni şifreni kaydettik. Şimdi Özet uygulamasına dönüp yeni şifrenle giriş
-          yapabilirsin.
-        </p>
+        <h1 className={styles.title}>{t.doneTitle}</h1>
+        <p className={styles.text}>{t.doneText}</p>
         <a className={styles.button} href="ozetapp://">
-          Özet&apos;i Aç
+          {t.openApp}
         </a>
       </div>
     );
@@ -130,13 +217,14 @@ export default function AuthCallback() {
   // mode === 'recovery'
   return (
     <div className={styles.wrap}>
-      <h1 className={styles.title}>Yeni şifre belirle</h1>
-      <p className={styles.text}>Özet hesabın için yeni bir şifre gir.</p>
+      <h1 className={styles.title}>{t.recoveryTitle}</h1>
+      <p className={styles.text}>{t.recoveryText}</p>
       <form className={styles.form} onSubmit={handleSubmit}>
         <input
           className={styles.input}
           type="password"
-          placeholder="Yeni şifre"
+          placeholder={t.newPassword}
+          aria-label={t.newPassword}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           autoComplete="new-password"
@@ -144,14 +232,15 @@ export default function AuthCallback() {
         <input
           className={styles.input}
           type="password"
-          placeholder="Yeni şifre (tekrar)"
+          placeholder={t.newPasswordAgain}
+          aria-label={t.newPasswordAgain}
           value={password2}
           onChange={(e) => setPassword2(e.target.value)}
           autoComplete="new-password"
         />
         {errorMsg && <p className={styles.error}>{errorMsg}</p>}
         <button className={styles.submit} type="submit" disabled={submitting}>
-          {submitting ? 'Kaydediliyor…' : 'Şifreyi Kaydet'}
+          {submitting ? t.saving : t.save}
         </button>
       </form>
     </div>
