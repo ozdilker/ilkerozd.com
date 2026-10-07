@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'Ozet app privacy policy and terms of use.',
 };
 
-const UPDATED = 'September 23, 2026';
+const UPDATED = 'October 7, 2026';
 
 export default function LegalPage() {
   return (
@@ -36,7 +36,7 @@ export default function LegalPage() {
           <p className={styles.eyebrow}>Effective date: {UPDATED}</p>
           <h2 className={styles.docTitle}>Privacy Policy</h2>
           <p className={styles.intro}>
-            Ozet is a mobile app that turns PDF documents and YouTube videos into readable
+            Ozet is a mobile app that turns PDF documents, YouTube videos and photos of your notes into readable
             notes. This page explains what data we collect while you use the app, how it&apos;s
             processed, and who it&apos;s shared with.
           </p>
@@ -67,7 +67,7 @@ export default function LegalPage() {
                   <td>A password-free sign-in alternative</td>
                 </tr>
                 <tr>
-                  <td>The PDF you upload / the video link you provide</td>
+                  <td>The PDF you upload / the video link you provide / the photos you take or pick (Ozet Plus)</td>
                   <td>You provide it on the &quot;New Summary&quot; screen</td>
                   <td>To generate the summary</td>
                 </tr>
@@ -110,8 +110,8 @@ export default function LegalPage() {
             <span className={styles.num}>3.</span>Sharing with third parties
           </h3>
           <p>
-            To generate a summary, the relevant part of the content you upload (PDF text or
-            video captions) is sent to one of the following subprocessors for the duration of
+            To generate a summary, the relevant part of the content you upload (PDF text, video
+            captions, or photos of your notes, Ozet Plus only) is sent to one of the following subprocessors for the duration of
             that summarization request:
           </p>
           <ul>
@@ -140,7 +140,9 @@ export default function LegalPage() {
             <span className={styles.num}>4.</span>Retention and deletion
           </h3>
           <p>
-            Your summaries are stored for as long as your account is open. You can delete your
+            Your summaries are stored for as long as your account is open. Photos you add for a
+            photo summary are used only to generate that summary and are not stored on our
+            servers; only the resulting summary text is saved. You can delete your
             account yourself at any time from within the app, using the &quot;Delete account&quot;
             option on the Profile screen — this permanently removes your account and all of your
             summaries. You can also reach us at the contact address below to request this
@@ -211,7 +213,7 @@ export default function LegalPage() {
             <span className={styles.num}>1.</span>Description of the service
           </h3>
           <p>
-            Ozet is an app that uses AI to read the PDF documents you upload and the YouTube
+            Ozet is an app that uses AI to read the PDF documents and photos of notes you upload and the YouTube
             video links you provide, turning them into tidy notes. Summaries are generated
             automatically; their accuracy depends on the source content and the model used, so
             you shouldn&apos;t treat summaries alone as a verified source of information.

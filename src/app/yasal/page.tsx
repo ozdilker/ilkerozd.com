@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'Özet uygulaması gizlilik politikası ve kullanım şartları.',
 };
 
-const GUNCELLEME = '23 Eylül 2026';
+const GUNCELLEME = '7 Ekim 2026';
 
 export default function YasalPage() {
   return (
@@ -30,7 +30,7 @@ export default function YasalPage() {
           <p className={styles.eyebrow}>Yürürlük tarihi: {GUNCELLEME}</p>
           <h2 className={styles.docTitle}>Gizlilik Politikası</h2>
           <p className={styles.intro}>
-            Özet, PDF belgelerini ve YouTube videolarını okunabilir notlara dönüştüren bir
+            Özet, PDF belgelerini, YouTube videolarını ve not fotoğraflarını okunabilir notlara dönüştüren bir
             mobil uygulamadır. Bu sayfa, uygulamayı kullanırken hangi verilerin toplandığını,
             nasıl işlendiğini ve kiminle paylaşıldığını açıklar.
           </p>
@@ -61,7 +61,7 @@ export default function YasalPage() {
                   <td>Şifresiz giriş alternatifi</td>
                 </tr>
                 <tr>
-                  <td>Yüklediğin PDF / verdiğin video linki</td>
+                  <td>Yüklediğin PDF / verdiğin video linki / çektiğin ya da seçtiğin fotoğraflar (Özet Plus)</td>
                   <td>“Yeni Özet” ekranında sen sağlarsın</td>
                   <td>Özeti üretebilmek</td>
                 </tr>
@@ -104,7 +104,7 @@ export default function YasalPage() {
             <span className={styles.num}>3.</span>Üçüncü taraflarla paylaşım
           </h3>
           <p>
-            Özeti üretebilmek için yüklediğin içeriğin (PDF metni veya video altyazısı) ilgili
+            Özeti üretebilmek için yüklediğin içeriğin (PDF metni, video altyazısı veya notlarının fotoğrafı, yalnızca Özet Plus) ilgili
             bölümü, o özetleme isteği süresince aşağıdaki alt işlemcilerden birine gönderilir:
           </p>
           <ul>
@@ -131,7 +131,9 @@ export default function YasalPage() {
             <span className={styles.num}>4.</span>Saklama ve silme
           </h3>
           <p>
-            Hesabın açık olduğu sürece özetlerin saklanır. Hesabını uygulama içinden, Profil
+            Hesabın açık olduğu sürece özetlerin saklanır. Fotoğraflı özet için eklediğin fotoğraflar
+            yalnızca o özeti üretmek için kullanılır ve sunucularımızda saklanmaz; yalnızca ortaya
+            çıkan özet metni kaydedilir. Hesabını uygulama içinden, Profil
             ekranındaki &quot;Hesabı sil&quot; seçeneğiyle istediğin an kendin silebilirsin; bu
             işlem hesabını ve tüm özetlerini kalıcı olarak kaldırır. Bunun yerine aşağıdaki
             iletişim adresinden bize ulaşarak da talep edebilirsin.
@@ -198,7 +200,7 @@ export default function YasalPage() {
             <span className={styles.num}>1.</span>Hizmetin tanımı
           </h3>
           <p>
-            Özet, yüklediğin PDF belgelerini ve verdiğin YouTube video linklerini yapay zeka
+            Özet, yüklediğin PDF belgelerini, not fotoğraflarını ve verdiğin YouTube video linklerini yapay zeka
             yardımıyla okuyup düzenli notlara çeviren bir uygulamadır. Özetler otomatik olarak
             üretilir; doğruluğu kaynak içeriğe ve kullanılan modele bağlıdır, bu nedenle
             özetleri tek başına doğrulanmış bilgi kaynağı olarak kullanmamalısın.
