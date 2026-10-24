@@ -7,6 +7,8 @@ export interface Product {
   kapak_gorsel: string;
   canli_link: string;
   github_link: string;
+  /** Uygulamanın gizlilik sayfası (ör. /orbit/privacy). Boşsa ürün sayfasında gösterilmez. */
+  gizlilik_link: string;
   teknolojiler: string[];
   tur: 'web' | 'mobil';
   gorseller: string[];

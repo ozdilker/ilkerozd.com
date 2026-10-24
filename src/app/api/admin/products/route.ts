@@ -74,7 +74,10 @@ export async function POST(req: Request): Promise<Response> {
     kapak_gorsel: typeof body.kapak_gorsel === 'string' ? body.kapak_gorsel : undefined,
     canli_link: typeof body.canli_link === 'string' ? body.canli_link : undefined,
     github_link: typeof body.github_link === 'string' ? body.github_link : undefined,
+    gizlilik_link: typeof body.gizlilik_link === 'string' ? body.gizlilik_link : undefined,
     teknolojiler: Array.isArray(body.teknolojiler) ? (body.teknolojiler as string[]) : undefined,
+    tur: body.tur === 'mobil' || body.tur === 'web' ? body.tur : undefined,
+    gorseller: Array.isArray(body.gorseller) ? (body.gorseller as string[]) : undefined,
     sira: typeof body.sira === 'number' ? body.sira : undefined,
     yayinda: typeof body.yayinda === 'boolean' ? body.yayinda : undefined,
   };
@@ -124,7 +127,10 @@ export async function PUT(req: Request): Promise<Response> {
   if (typeof body.kapak_gorsel === 'string') data.kapak_gorsel = body.kapak_gorsel;
   if (typeof body.canli_link === 'string') data.canli_link = body.canli_link;
   if (typeof body.github_link === 'string') data.github_link = body.github_link;
+  if (typeof body.gizlilik_link === 'string') data.gizlilik_link = body.gizlilik_link;
   if (Array.isArray(body.teknolojiler)) data.teknolojiler = body.teknolojiler as string[];
+  if (body.tur === 'mobil' || body.tur === 'web') data.tur = body.tur;
+  if (Array.isArray(body.gorseller)) data.gorseller = body.gorseller as string[];
   if (typeof body.sira === 'number') data.sira = body.sira;
   if (typeof body.yayinda === 'boolean') data.yayinda = body.yayinda;
 

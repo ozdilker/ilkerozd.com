@@ -19,6 +19,7 @@ export function initSchema(db: Database.Database): void {
       kapak_gorsel TEXT NOT NULL DEFAULT '',
       canli_link TEXT NOT NULL DEFAULT '',
       github_link TEXT NOT NULL DEFAULT '',
+      gizlilik_link TEXT NOT NULL DEFAULT '',
       teknolojiler TEXT NOT NULL DEFAULT '[]',
       tur TEXT NOT NULL DEFAULT 'web',
       gorseller TEXT NOT NULL DEFAULT '[]',
@@ -63,6 +64,9 @@ export function initSchema(db: Database.Database): void {
   );
   if (!productCols.has('tur')) {
     db.exec("ALTER TABLE products ADD COLUMN tur TEXT NOT NULL DEFAULT 'web'");
+  }
+  if (!productCols.has('gizlilik_link')) {
+    db.exec("ALTER TABLE products ADD COLUMN gizlilik_link TEXT NOT NULL DEFAULT ''");
   }
   if (!productCols.has('gorseller')) {
     db.exec("ALTER TABLE products ADD COLUMN gorseller TEXT NOT NULL DEFAULT '[]'");

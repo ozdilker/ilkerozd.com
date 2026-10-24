@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPublishedProducts, getProductBySlug } from '@/lib/queries';
 import { splitParagraphs } from '@/lib/text';
@@ -27,7 +28,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     notFound();
   }
 
-  const { baslik, detay, kapak_gorsel, canli_link, github_link, teknolojiler, tur, gorseller } =
+  const { baslik, detay, kapak_gorsel, canli_link, github_link, gizlilik_link, teknolojiler, tur, gorseller } =
     product;
   const paragraphs = splitParagraphs(detay);
   // Galeri: kapak + ek görseller (kapak zaten listede ise tekrarlama).
@@ -74,6 +75,17 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               >
                 Canlı ↗
               </a>
+            ) : null}
+            {gizlilik_link ? (
+              gizlilik_link.startsWith('/') ? (
+                <Link className={styles.link} href={gizlilik_link}>
+                  Gizlilik →
+                </Link>
+              ) : (
+                <a className={styles.link} href={gizlilik_link} target="_blank" rel="noopener noreferrer">
+                  Gizlilik ↗
+                </a>
+              )
             ) : null}
             {github_link ? (
               <a

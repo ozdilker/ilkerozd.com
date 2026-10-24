@@ -45,6 +45,24 @@ describe('createProduct / deleteProduct', () => {
     expect(product?.yayinda).toBe(true);
   });
 
+  it('gizlilik_link kaydedilir, güncellenir ve eski şemaya migrate edilir', () => {
+    const db = seedDb();
+    const id = createProduct({ baslik: 'Orbit', slug: 'orbit', gizlilik_link: '/orbit/privacy' }, db);
+    expect(getProductBySlug('orbit', db)?.gizlilik_link).toBe('/orbit/privacy');
+    updateProduct(id, { gizlilik_link: '' }, db);
+    expect(getProductBySlug('orbit', db)?.gizlilik_link).toBe('');
+
+    // gizlilik_link kolonu olmayan eski bir tablo initSchema ile tamamlanır.
+    const old = new Database(':memory:');
+    old.exec(`CREATE TABLE products (id INTEGER PRIMARY KEY AUTOINCREMENT, baslik TEXT NOT NULL, slug TEXT NOT NULL UNIQUE,
+      kisa_aciklama TEXT NOT NULL DEFAULT '', detay TEXT NOT NULL DEFAULT '', kapak_gorsel TEXT NOT NULL DEFAULT '',
+      canli_link TEXT NOT NULL DEFAULT '', github_link TEXT NOT NULL DEFAULT '', teknolojiler TEXT NOT NULL DEFAULT '[]',
+      sira INTEGER NOT NULL DEFAULT 0, yayinda INTEGER NOT NULL DEFAULT 1, olusturma TEXT NOT NULL DEFAULT (datetime('now')))`);
+    initSchema(old);
+    const cols = (old.prepare('PRAGMA table_info(products)').all() as { name: string }[]).map((c) => c.name);
+    expect(cols).toContain('gizlilik_link');
+  });
+
   it('silinen ürün getProductBySlug ile artık bulunamaz', () => {
     const db = seedDb();
     const id = createProduct({ baslik: 'Silinecek', slug: 'silinecek' }, db);

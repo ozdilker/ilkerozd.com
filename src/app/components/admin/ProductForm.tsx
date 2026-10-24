@@ -20,6 +20,7 @@ interface FormState {
   kapak_gorsel: string;
   canli_link: string;
   github_link: string;
+  gizlilik_link: string;
   teknolojiler: string[];
   tur: 'web' | 'mobil';
   gorseller: string[];
@@ -37,6 +38,7 @@ function toFormState(product: Product | null): FormState {
       kapak_gorsel: '',
       canli_link: '',
       github_link: '',
+      gizlilik_link: '',
       teknolojiler: [],
       tur: 'web',
       gorseller: [],
@@ -52,6 +54,7 @@ function toFormState(product: Product | null): FormState {
     kapak_gorsel: product.kapak_gorsel,
     canli_link: product.canli_link,
     github_link: product.github_link,
+    gizlilik_link: product.gizlilik_link,
     teknolojiler: product.teknolojiler,
     tur: product.tur,
     gorseller: product.gorseller,
@@ -106,6 +109,7 @@ export default function ProductForm({ product }: ProductFormProps) {
         kapak_gorsel: form.kapak_gorsel,
         canli_link: form.canli_link,
         github_link: form.github_link,
+        gizlilik_link: form.gizlilik_link,
         teknolojiler: form.teknolojiler,
         tur: form.tur,
         gorseller: form.gorseller,
@@ -199,6 +203,11 @@ export default function ProductForm({ product }: ProductFormProps) {
       <label className={styles.field}>
         <span>GitHub link</span>
         <input value={form.github_link} onChange={(e) => update('github_link', e.target.value)} />
+      </label>
+
+      <label className={styles.field}>
+        <span>Gizlilik sayfası linki (ör. /orbit/privacy)</span>
+        <input value={form.gizlilik_link} onChange={(e) => update('gizlilik_link', e.target.value)} />
       </label>
 
       <div className={styles.field}>

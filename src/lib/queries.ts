@@ -11,6 +11,7 @@ interface ProductRow {
   kapak_gorsel: string;
   canli_link: string;
   github_link: string;
+  gizlilik_link: string;
   teknolojiler: string;
   tur: string;
   gorseller: string;
