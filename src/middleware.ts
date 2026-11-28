@@ -5,7 +5,7 @@ import { NextResponse, type NextRequest } from 'next/server';
  * /Orbit/Privacy gibi büyük harfle yazarsa küçük harfli adrese yönlendirir.
  * Yeni bir uygulama eklendiğinde adını APP_PREFIXES'a eklemek yeterli.
  */
-const APP_PREFIXES = ['/orbit'];
+const APP_PREFIXES = ['/orbit', '/bitestep'];
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
@@ -19,5 +19,12 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/Orbit', '/Orbit/:path*', '/orbit/:path*'],
+  matcher: [
+    '/Orbit',
+    '/Orbit/:path*',
+    '/orbit/:path*',
+    '/Bitestep',
+    '/Bitestep/:path*',
+    '/bitestep/:path*',
+  ],
 };
