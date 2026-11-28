@@ -57,7 +57,23 @@ export default function BitestepPrivacyPage() {
           </p>
 
           <h3 className={styles.h}>
-            <span className={styles.num}>3.</span>Third parties
+            <span className={styles.num}>3.</span>Reminders and sharing
+          </h3>
+          <ul>
+            <li>
+              <strong>Daily reminder:</strong> if you turn it on, Bitestep schedules one
+              notification a day on your iPhone. It is not sent from a server and does not contain
+              your task names.
+            </li>
+            <li>
+              <strong>Share card:</strong> the card goes only where you send it, and shows the task
+              name only if you leave &quot;Show task name&quot; on. If you choose Save Image, iOS
+              asks for permission to add it to your photos; Bitestep cannot see your photos.
+            </li>
+          </ul>
+
+          <h3 className={styles.h}>
+            <span className={styles.num}>4.</span>Third parties
           </h3>
           <p>
             Bitestep contains no analytics, advertising, tracking or crash-reporting services and
@@ -65,7 +81,7 @@ export default function BitestepPrivacyPage() {
           </p>
 
           <h3 className={styles.h}>
-            <span className={styles.num}>4.</span>Features provided by Apple
+            <span className={styles.num}>5.</span>Features provided by Apple
           </h3>
           <ul>
             <li>
@@ -84,7 +100,7 @@ export default function BitestepPrivacyPage() {
           </ul>
 
           <h3 className={styles.h}>
-            <span className={styles.num}>5.</span>Deleting your data
+            <span className={styles.num}>6.</span>Deleting your data
           </h3>
           <p>
             Deleting a task in the app removes its title and steps. A record that a step was
@@ -93,12 +109,12 @@ export default function BitestepPrivacyPage() {
           </p>
 
           <h3 className={styles.h}>
-            <span className={styles.num}>6.</span>Children
+            <span className={styles.num}>7.</span>Children
           </h3>
           <p>Bitestep does not collect data from anyone, including children.</p>
 
           <h3 className={styles.h}>
-            <span className={styles.num}>7.</span>Changes to this policy
+            <span className={styles.num}>8.</span>Changes to this policy
           </h3>
           <p>
             If this policy changes, the date at the top of this page changes with it. Bitestep will
@@ -106,7 +122,7 @@ export default function BitestepPrivacyPage() {
           </p>
 
           <h3 className={styles.h}>
-            <span className={styles.num}>8.</span>Contact
+            <span className={styles.num}>9.</span>Contact
           </h3>
           <div className={styles.contactCard}>
             <h4>For privacy questions</h4>
